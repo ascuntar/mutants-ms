@@ -1,0 +1,115 @@
+{
+	"info": {
+		"_postman_id": "31672807-cf70-435c-b29e-32a6323499cf",
+		"name": "MUTANTS API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Local Is Mutant",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"dna\": [\n        \"ATGC\",\n        \"CAGT\",\n        \"TTAT\",\n        \"AGAA\"\n    ]\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3005/api/v1/mutant",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"v1",
+						"mutant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remote Is Mutant",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"dna\": [\n        \"ATGC\",\n        \"CAGT\",\n        \"TTAT\",\n        \"AGAA\"\n    ]\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://mutants-api-rest.herokuapp.com/api/v1/mutant",
+					"protocol": "https",
+					"host": [
+						"mutants-api-rest",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"mutant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Local Stats",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/v1/mutant/stats",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"v1",
+						"mutant",
+						"stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remote Local Stats",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://mutants-api-rest.herokuapp.com/api/v1/mutant/stats",
+					"protocol": "https",
+					"host": [
+						"mutants-api-rest",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"mutant",
+						"stats"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
