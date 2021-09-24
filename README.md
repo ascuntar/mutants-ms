@@ -60,6 +60,8 @@ Se utilizó la arquitectura orientada a servicios, en este caso particular se ut
 - Controller: Define que servicio ejecuta las peticiones realizadas
 - Service: En esta capa se ejecuta toda la lógica de negocio
 
+Es importante mencionar que se han utilizado librerías de uso habitual con el fin de acelerar el proceso de desarrollo y poder centrarse en la parte crucial que involucra el requerimiento especifico.
+
 La idea principal del desarrollo es tratar como una matriz las cadenas de ADN suministradas, adicional a esto se cambió el orden de las cadenas con el fin de tener una matriz reversa. También se hizo un recorrido para obtener las cadenas en forma vertical (Columnas). Esto nos permite almacenar los datos en un Array y luego hacer la comparación con el metodo contains con el fin de determinar si en las posiciones se encuentra las cadenas solicitadas
 
 - AAAA
