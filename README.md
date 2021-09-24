@@ -15,7 +15,7 @@ npm run start
 
 ## Instrucciones para pruebas en local
 
-El servicio corre por defecto en el puerto 3005.
+El servicio corre por defecto en el puerto 3005. Este parametro pruede ser actualizado en el archivo .config.env así como las propiedades de la cadena de conexión a la base de datos.
 Se adjunta una colección tipo Postman con los 2 servicios solicitados en el documento, esta colección está ubicada en la carpeta resources
 
 ```sh
