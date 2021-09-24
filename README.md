@@ -28,13 +28,13 @@ El servicio corre por defecto en el puerto 3005. Este parametro pruede ser actua
 - No es mutante
   `{ "dna": [ "ATGC", "CAGT", "TTAT", "AGAA" ] }`
 
-- Matriz no valida, caracteres no permitidos
+- Matriz no válida, caracteres no permitidos
   `{ "dna": [ "ABCD", "EFGH", "IJKL", "MNOP" ] }`
 
-- Matriz no valida, caracteres no permitidos
+- Matriz no válida, caracteres no permitidos
   `{ "dna": [ "ATGCGA", "CAGTHH", "TTATGT", "AGAAGG", "CCCCPP", "XXACTG" ] }`
 
-- Matriz no valida, no cumple con el tamaño
+- Matriz no válida, no cumple con el tamaño
   `{ "dna": [ "ATGC", "CAGT", "TTAT" ] }`
 
 Se adjunta una colección tipo Postman con los 2 servicios solicitados en el documento, esta colección está ubicada en la carpeta resources
@@ -62,8 +62,6 @@ La colección adicionalmente tiene las dos apis apuntando de manera remota al se
 POST https://mutants-api-rest.herokuapp.com/api/v1/mutant
 GET  https://mutants-api-rest.herokuapp.com/api/v1/mutant/stats
 ```
-
-La colección adicionalmente tiene las dos apis apuntando de manera remota al servicio en ejecución en Heroku para la prueba en remoto.
 
 ### Nota:
 
