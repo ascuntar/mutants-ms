@@ -40,7 +40,7 @@ exports.isMutant = async (req) => {
     });
     if (isMutantCounter >= 2) {
       await Mutant.create({ dnaChain: dnaChain, isMutant: true });
-      return true;
+      return commonMessages.WELCOME;
     } else {
       await Mutant.create({ dnaChain: dnaChain, isMutant: false });
       throw new ServiceException(

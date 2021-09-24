@@ -13,9 +13,30 @@ npm install
 npm run start
 ```
 
-## Instrucciones para pruebas en local
+## Instrucciones para pruebas
 
 El servicio corre por defecto en el puerto 3005. Este parametro pruede ser actualizado en el archivo .config.env así como las propiedades de la cadena de conexión a la base de datos.
+
+### Cadenas de Ejemplo
+
+- Es mutante
+  `{ "dna": [ "ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTG" ] }`
+
+- No es mutante
+  `{ "dna": [ "ATGCGA", "CAGTGC", "TTATTT", "AGACGG", "GCGTCA", "TCACTG" ] }`
+
+- No es mutante
+  `{ "dna": [ "ATGC", "CAGT", "TTAT", "AGAA" ] }`
+
+- Matriz no valida, caracteres no permitidos
+  `{ "dna": [ "ABCD", "EFGH", "IJKL", "MNOP" ] }`
+
+- Matriz no valida, caracteres no permitidos
+  `{ "dna": [ "ATGCGA", "CAGTHH", "TTATGT", "AGAAGG", "CCCCPP", "XXACTG" ] }`
+
+- Matriz no valida, no cumple con el tamaño
+  `{ "dna": [ "ATGC", "CAGT", "TTAT" ] }`
+
 Se adjunta una colección tipo Postman con los 2 servicios solicitados en el documento, esta colección está ubicada en la carpeta resources
 
 ```sh
@@ -26,21 +47,28 @@ cd mutants-ms/resources
 
 Por favor abrir la colección con postman y ejecutar las dos apis existentes
 
+#### Local
+
 ```sh
 POST http://localhost:3005/api/v1/mutant
 GET  http://localhost:3005/api/v1/mutant/stats
+```
+
+#### Remoto
+
+La colección adicionalmente tiene las dos apis apuntando de manera remota al servicio en ejecución en Heroku para la prueba en remoto.
+
+```sh
+POST https://mutants-api-rest.herokuapp.com/api/v1/mutant
+GET  https://mutants-api-rest.herokuapp.com/api/v1/mutant/stats
 ```
 
 La colección adicionalmente tiene las dos apis apuntando de manera remota al servicio en ejecución en Heroku para la prueba en remoto.
 
 ### Nota:
 
-El servicio está alojado en una capa gratuita, por este motivo la primera solicitúd va a tomar un tiempo adicional mientras se prende el contenedor y arranca la aplicación
-
-```sh
-POST https://mutants-api-rest.herokuapp.com/api/v1/mutant
-GET  https://mutants-api-rest.herokuapp.com/api/v1/mutant/stats
-```
+El servicio está alojado en una capa gratuita, por este motivo la primera solicitúd va a tomar un tiempo adicional mientras se prende el contenedor y arranca la aplicación.
+La base de datos está en blanco pero se crea cuando se realice la ejecución.
 
 Con esto se puede verificar el funcionamiento del microservicio tanto en local como en remoto.
 El servicio utiliza una conexión a una base de datos MongoDB la cual está alojada en Atlas, por lo tanto no es necesario tenerlo instalado para su ejecución.
