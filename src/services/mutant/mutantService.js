@@ -7,6 +7,7 @@ const commonMessages = require("../../utils/constants/commonMessages");
 const httpCodes = require("../../utils/constants/httpCodes");
 const Mutant = require("../../models/mutant/mutantModel");
 const sequenceNumber = 3;
+const isMutantParam = 2;
 
 // =========== Function to check if it is a mutant
 exports.isMutant = async (req) => {
@@ -22,22 +23,25 @@ exports.isMutant = async (req) => {
   if (!mutant) {
     matrixValidate(matrixSize, dnaChain);
     const defDnaChainsArray = arrayChainDnaGenerator(dna, matrixSize);
-
     let isMutantCounter = 0;
-    defDnaChainsArray.map((e) => {
-      if (e.includes("AAAA")) {
-        isMutantCounter += 1;
+    for (chain of defDnaChainsArray) {
+      if (isMutantCounter < isMutantParam) {
+        if (chain.includes("AAAA")) {
+          isMutantCounter += 1;
+        }
+        if (chain.includes("TTTT")) {
+          isMutantCounter += 1;
+        }
+        if (chain.includes("CCCC")) {
+          isMutantCounter += 1;
+        }
+        if (chain.includes("GGGG")) {
+          isMutantCounter += 1;
+        }
+      } else {
+        break;
       }
-      if (e.includes("TTTT")) {
-        isMutantCounter += 1;
-      }
-      if (e.includes("CCCC")) {
-        isMutantCounter += 1;
-      }
-      if (e.includes("GGGG")) {
-        isMutantCounter += 1;
-      }
-    });
+    }
     if (isMutantCounter >= 2) {
       await Mutant.create({ dnaChain: dnaChain, isMutant: true });
       return commonMessages.WELCOME;
@@ -66,8 +70,12 @@ exports.isMutant = async (req) => {
   }
 };
 
+/**
+ * Function to returns stats of mutant checks
+ * @returns
+ */
+
 exports.stats = async () => {
-  const total = await Mutant.countDocuments().lean();
   const count_mutant_dna = await Mutant.countDocuments({
     isMutant: true,
   }).lean();
@@ -77,7 +85,7 @@ exports.stats = async () => {
   let stats = {
     count_mutant_dna: count_mutant_dna,
     count_human_dna: count_human_dna,
-    total: total,
+    total: count_mutant_dna + count_human_dna,
   };
 
   return stats;
